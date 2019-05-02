@@ -12,9 +12,12 @@ ClipWait
 clipboard := RegExReplace(clipboard, "\r\n", """  """)
 
 IfInString, clipboard, Session.vim
-    Run, nvim-qt.exe "%clipboard%" -- -S
-else
-    Run, nvim-qt.exe "%clipboard%" -- -p
+{
+    Run, nvim-qt.exe -- -S "%clipboard%"
+}
+else {
+    Run, nvim-qt.exe -- -p "%clipboard%"
+}
 
 Clipboard := ClipSaved
 ClipSaved =
